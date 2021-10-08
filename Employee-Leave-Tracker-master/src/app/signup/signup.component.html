@@ -1,0 +1,113 @@
+
+
+<div class="container">
+    <h2>Registration Form !</h2>
+  <form class="form-horizontal" [formGroup]="userform" novalidate autocomplete="off">
+
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="username">Username <span aria-hidden="true" style="color: red;">*</span></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" formControlName="username" placeholder="Username"> <br>
+    <div  class="alert alert-danger" *ngIf="userform.controls['username'].invalid && userform.controls['username'].touched">
+    <div *ngIf="userform.controls['username'].errors.required">Name is Required</div>
+    <div *ngIf="userform.controls['username'].errors.minlength">Name should be minimum of 3 letters</div>
+    </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="FirstName">Name <span aria-hidden="true" style="color: red;">*</span></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" formControlName="FirstName" placeholder="FirstName"> <br>
+    <div  class="alert alert-danger" *ngIf="userform.controls['FirstName'].invalid && userform.controls['FirstName'].touched">
+    <div *ngIf="userform.controls['FirstName'].errors.required">Name is Required</div>
+    <div *ngIf="userform.controls['FirstName'].errors.minlength">Name should be minimum of 3 letters</div>
+    </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="SecondName">Surname <span aria-hidden="true" style="color: red;">*</span></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" formControlName="SecondName" placeholder="Surname"> <br>
+    <div  class="alert alert-danger" *ngIf="userform.controls['SecondName'].invalid && userform.controls['SecondName'].touched">
+    <div *ngIf="userform.controls['SecondName'].errors.required">Surname is Required</div>
+    <div *ngIf="userform.controls['SecondName'].errors.minlength">Surname should be minimum of 3 letters</div>
+    </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="role">Role <span aria-hidden="true" style="color: red;">*</span></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" formControlName="role" placeholder="Employee Role"> <br>
+    <div  class="alert alert-danger" *ngIf="userform.controls['role'].invalid && userform.controls['role'].touched">
+    <div *ngIf="userform.controls['role'].errors.required">Employee Role is Required</div>
+    <div *ngIf="userform.controls['role'].errors.minlength">Employee Role should be minimum of 3 letters</div>
+    </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="userid">Employee Id <span aria-hidden="true" style="color: red;">*</span></label>
+      <div class="col-sm-8">
+      <input type="text" class="form-control" formControlName="userid" placeholder="empid"> <br>
+      <div  class="alert alert-danger" *ngIf="userform.controls['userid'].invalid && userform.controls['userid'].touched">
+      <div *ngIf="userform.controls['userid'].errors.required">Name is Required</div>
+      <div *ngIf="userform.controls['userid'].errors.minlength">Name should be minimum of 3 letters</div>
+      </div>
+      </div>
+      </div>
+
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="department">Department <span aria-hidden="true" style="color: red;">*</span></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" formControlName="department" placeholder="Department"> <br>
+    <div  class="alert alert-danger" *ngIf="userform.controls['department'].invalid && userform.controls['role'].touched">
+    <div *ngIf="userform.controls['department'].errors.required">Department is Required</div>
+    <div *ngIf="userform.controls['department'].errors.minlength">Department should be minimum of 3 letters</div>
+    </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="payroll">Payroll <span aria-hidden="true" style="color: red;">*</span></label>
+      <div class="col-sm-8">
+      <input type="text" class="form-control" formControlName="payroll" placeholder="empid"> <br>
+      <div  class="alert alert-danger" *ngIf="userform.controls['userid'].invalid && userform.controls['payroll'].touched">
+      <div *ngIf="userform.controls['payroll'].errors.required">Employee Payroll is Required</div>
+      <div *ngIf="userform.controls['payroll'].errors.minlength">Employee should be minimum of 3 letters</div>
+      </div>
+      </div>
+      </div>
+
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="userPassword">Password<span aria-hidden="true" style="color: red;">*</span></label>
+    <div class="col-sm-8">
+    <input type="password" class="form-control" formControlName="userPassword" placeholder="Password"> <br>
+    <div class="alert alert-danger" *ngIf="userform.controls['userPassword'].invalid && userform.controls['userPassword'].touched">
+    <div *ngIf="userform.controls['userPassword'].errors.required">Password is Required</div>
+    <div *ngIf="userform.controls['userPassword'].errors.minlength">Password should be minimum of 8 letters</div>
+    </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="Email">Email<span aria-hidden="true" style="color: red;">*</span></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" formControlName="Email" placeholder="Email"> <br>
+    <div class="alert alert-danger" *ngIf="userform.controls['Email'].invalid && userform.controls['Email'].touched">
+    <div *ngIf="userform.controls['Email'].errors.required">Email is Required</div>
+    <div *ngIf="userform.controls['Email'].errors.pattern">Email must be a valid email address</div>
+    </div>
+    </div>
+    </div>
+
+         <button type="button" class="btn btn-primary m-2" (click)="adddata()" value="button"  [disabled]="userform.invalid">SignUp</button>
+
+  </form>
+
+
+
+</div>
+

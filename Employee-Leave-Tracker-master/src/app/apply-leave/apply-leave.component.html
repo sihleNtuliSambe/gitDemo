@@ -1,0 +1,78 @@
+<div class="container" style="margin: auto;
+width: 80%;
+border:2px solid black;
+padding: 30px;">
+<div style="text-align: left;margin-top: 20;margin-left: 80%;">
+<a  [routerLink]="['/logout']" > <button mat-button type="submit" class="mat-raised-button mat-primary"> Logout</button></a><router-outlet></router-outlet>
+
+</div>
+<h1 style="text-align: center;">Leave Application Form </h1>
+    <h2><b>Welcome</b>&nbsp;<b>{{username}}</b></h2>
+  <form class="form-horizontal" [formGroup]=" leaveform" novalidate>
+
+    <label class="control-label col-sm-2" for="From"><b>From:</b></label>
+    <div class="col-sm-5">
+    <div class="form-group">
+
+      <input type="date"  [min]="formatted_date" [(ngModel)]="dt" (change)="onFromDatechange()" class="form-control input-sm" id="fromdate" name="fromdate" placeholder="Required" formControlName="fromdate"  required>
+
+    </div>
+    </div>
+      <label class="control-label col-sm-2" for="To"><b>To:</b></label>
+      <div class="col-sm-5">
+      <div class="form-group">
+
+        <input type="date" class="form-control input-sm" [min]="todate" id="todate" name="todate" placeholder="Required" formControlName="todate" required>
+
+      </div>
+      </div>
+      <label class="control-label col-sm-2" for="To"><b>Reason:</b></label>
+      <div class="col-sm-5">
+      <div class="form-group">
+      <select id="reason" name="reason"  class="form-control input-sm" [(ngModel)]="selectedReason" (change)="onChangeReason($event)">
+        <option value="" [selected]>Select Reasons</option>
+        <option value="Cultural">Cultural</option>
+        <option value="Disability">Disability</option>
+        <option value="Maternity">Maternitys</option>
+        <option value="Medical">Medical</option>
+        <option value="Parental">Parental</option>
+        <option value="Sabbatical">Sabbatical</option>
+        <option value="Annual" class="value">Annual</option>
+      </select>
+      </div>
+      </div>
+        <button type="button"  class="btn btn-info" (click)="addData()" value="Submit"  [disabled]="leaveform.pristine ||leaveform.invalid ">Apply</button> &nbsp;&nbsp;
+        <button type="button"  class="btn btn-info" (click)="updateLeave()" [disabled]="isupdate" >Update</button>
+      <!-- </div> -->
+      <br><br>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th item-width="100">Employee Id</th>
+              <th item-width="400">From</th>
+              <th item-width="400">To</th>
+              <th item-width="400">Reason</th>
+              <th item-width="100">Status</th>
+              <th item-width="300">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let emp of employee;let i=index">
+
+            <tr *ngIf="emp">
+              <td>{{emp.userid}}</td>
+              <td>{{emp.fromdate}}</td>
+              <td>{{emp.todate}}</td>
+              <td>{{emp.selectedReason}}</td>
+              <td>{{emp.status}}</td>
+              <td>
+               <button  class="btn btn-success" (click)="editLeave(i)" [disabled]='isEdit'>Edit</button>&nbsp;&nbsp;
+                <a class="btn btn-danger" (click)="deleteLeave(i)">Delete</a>
+              </td>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+ </form>
+</div>
+

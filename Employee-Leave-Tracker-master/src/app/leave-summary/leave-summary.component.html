@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container " style="margin: auto;
+ width: 80%;
+border:2px solid black;
+padding: 30px;">
+ 
+<img  src="assets/img_avatar.png" alt="Avatar" class="avatar">
+<p>&nbsp;<b>Admin</b></p>
+<div style="text-align: left;margin-top: 20;margin-left: 90%;">
+     <a [routerLink]="['/logout']" ><button mat-button type="submit" class="mat-raised-button mat-primary"> Logout</button></a><router-outlet></router-outlet> 
+ </div>
+<h1 style="text-align: center;">Leave Summary</h1>
+
+<table class="table table-bordered" >
+  <th item-width="400"> Employee Id</th>
+  <th item-width="400">Employee Name</th>
+  <th item-width="400">From</th>
+  <th item-width="400">To</th>
+  <th item-width="400">Reason</th>
+  <th item-width="400">ApprovedStatus</th>
+   <th item-width="400">Action</th>
+  <tr *ngFor="let leave of leaveinfo;let i=index">
+    <td>{{leave.userid}}</td>  
+    <td>{{leave.username}}</td>
+    <td>{{leave.fromdate}}</td>
+    <td>{{leave.todate}}</td>
+    <td>{{leave.selectedReason}}</td>
+    <td>{{leave.status}}</td> 
+    <td><a class="btn btn-success" (click)="approval(i)" >Approve</a>&nbsp;
+      <a class="btn btn-danger" (click)="notApproval(i)" >Reject</a></td>
+    
+  </tr>
+
+</table>
+</div>
+
+
+
